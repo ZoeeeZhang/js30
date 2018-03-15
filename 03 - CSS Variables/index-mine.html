@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Scoped CSS Variables and JS</title>
+</head>
+
+<body>
+  <h2>Update CSS Variables with
+    <span class='hl'>JS</span>
+  </h2>
+
+  <div class="controls">
+    <label for="spacing">Spacing:</label>
+    <input id="spacing" type="range" name="spacing" min="10" max="200" value="100" data-sizing="px">
+
+    <label for="blur">Blur:</label>
+    <input id="blur" type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
+
+    <label for="base">Base Color</label>
+    <input id="base" type="color" name="base" value="#ffffff">
+  </div>
+
+  <img src="DSC01672.jpg">
+
+  <style>
+    /*
+      misc styles, nothing to do with CSS variables
+    */
+
+    body {
+      text-align: center;
+      background: #193549;
+      color: white;
+      font-family: 'helvetica neue', sans-serif;
+      font-weight: 100;
+      font-size: 50px;
+    }
+
+    img {
+      width: 364.8px;
+      height: 547.2px;
+    }
+
+
+    .controls {
+      margin-bottom: 50px;
+    }
+
+    input {
+      width: 100px;
+    }
+  </style>
+
+  <script>
+    const inputs = document.querySelectorAll('.controls input');
+    const spacing = document.querySelector('#spacing');
+    const blur = document.querySelector('#blur');
+    const base = document.querySelector('#base');
+    const image = document.querySelector('img');
+    const h = document.querySelector('.hl');
+
+
+    function changeImg() {
+      image.style.padding = `${spacing.value}px`;
+      image.style.filter = `blur(${blur.value}px)`;
+      image.style.background = `${base.value}`;
+      h.style.color = `${base.value}`;
+    }
+
+    inputs.forEach(input => input.addEventListener('mouseover', changeImg));
+    inputs.forEach(input => input.addEventListener('change', changeImg));
+
+  </script>
+
+</body>
+
+</html>
