@@ -61,7 +61,6 @@
     const image = document.querySelector('img');
     const h = document.querySelector('.hl');
 
-
     function changeImg() {
       image.style.padding = `${spacing.value}px`;
       image.style.filter = `blur(${blur.value}px)`;
@@ -71,7 +70,6 @@
 
     inputs.forEach(input => input.addEventListener('mouseover', changeImg));
     inputs.forEach(input => input.addEventListener('change', changeImg));
-
   </script>
 
 </body>
